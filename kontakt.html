@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje Hobby - Kontakt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="top">
+    <svg class="logo" width="80" height="60" viewBox="0 0 120 90" role="img" aria-label="Aparat fotograficzny">
+        <rect x="38" y="8" width="44" height="16" rx="4" fill="#9a9a9a"/>
+        <rect x="6" y="20" width="108" height="64" rx="10" fill="#e6e6e6"/>
+        <rect class="flash" x="14" y="28" width="16" height="8" rx="2" fill="#f2b705"/>
+        <circle cx="60" cy="52" r="26" fill="#1c1c1c"/>
+        <circle cx="60" cy="52" r="18" fill="teal"/>
+        <circle cx="52" cy="44" r="5" fill="#fff" opacity="0.7"/>
+    </svg>
+    <h1>Moje Hobby - Kontakt</h1>
+  </header>
+  <div class="container">
+    <nav class="lewy">
+        <ul>
+            <li><a href="index.html">Strona główna</a></li>
+            <li class="dropdown">
+                <a href="sprzet.html">Sprzęt</a>
+                <ul class="submenu">
+                    <li><a href="sprzet.html#aparaty">Aparaty</a></li>
+                    <li><a href="sprzet.html#obiektywy">Obiektywy</a></li>
+                </ul>
+            </li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a class="active" href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
+    <main class="srodkowy">
+        <h2>Kontakt</h2>
+        <p>Masz pytanie o zdjęcia, sprzęt albo chcesz umówić sesję? Wypełnij krótką ankietę poniżej. Odpowiadam zwykle w ciągu kilku dni.</p>
+        <section>
+            <h3>Ankieta</h3>
+            <form action="dziekuje.html" method="get">
+                <p>
+                    <label for="imie">Imię</label>
+                    <input type="text" id="imie" name="imie" required>
+                </p>
+                <p>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </p>
+                <p>
+                    <label for="telefon">Telefon</label>
+                    <input type="tel" id="telefon" name="telefon">
+                </p>
+                <p>
+                    <label for="sesja">Rodzaj sesji</label>
+                    <select id="sesja" name="sesja">
+                        <option value="portretowa">Portretowa</option>
+                        <option value="plenerowa">Plenerowa</option>
+                        <option value="eventowa">Eventowa</option>
+                        <option value="produktowa">Produktowa</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="termin">Preferowany termin</label>
+                    <input type="date" id="termin" name="termin">
+                </p>
+                <p>
+                    <label for="osoby">Liczba osób na zdjęciach</label>
+                    <input type="number" id="osoby" name="osoby" min="1" max="20" value="1">
+                </p>
+                <fieldset>
+                    <legend>Preferowany kontakt</legend>
+                    <input type="radio" id="kontakt-email" name="kontakt" value="email" checked>
+                    <label for="kontakt-email">E-mail</label>
+                    <input type="radio" id="kontakt-telefon" name="kontakt" value="telefon">
+                    <label for="kontakt-telefon">Telefon</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Dodatki</legend>
+                    <input type="checkbox" id="retusz" name="dodatki" value="retusz">
+                    <label for="retusz">Zaawansowany retusz</label>
+                    <input type="checkbox" id="odbitki" name="dodatki" value="odbitki">
+                    <label for="odbitki">Odbitki</label>
+                </fieldset>
+                <p>
+                    <label for="wiadomosc">Wiadomość</label>
+                    <textarea id="wiadomosc" name="wiadomosc" rows="5"></textarea>
+                </p>
+                <p>
+                    <input type="reset" value="Wyczyść">
+                    <input type="submit" value="Wyślij">
+                </p>
+            </form>
+        </section>
+    </main>
+  </div>
+  <footer>Copyright &copy; 2026 Kacper Dębowski. Wszelkie prawa zastrzeżone.</footer>
+</body>
+</html>

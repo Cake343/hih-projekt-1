@@ -1,0 +1,301 @@
+@keyframes flash {
+    0%, 89%  { fill: #fff; }
+    90%, 100%  { fill: #f2b705; }
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.logo rect.flash {
+    animation: flash 3s infinite;
+}
+
+header {
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    flex: 0 0 165px;
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+nav li {
+    margin-bottom: 10px;
+    background-color: #333;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.submenu {
+    display: none;
+    list-style-type: none;
+    padding-left: 20px;
+    border-radius: 8px;
+}
+.submenu li {
+    margin-top: 10px;
+}
+.dropdown:hover .submenu,
+.dropdown:focus-within .submenu {
+    display: block;
+}
+.dropdown {
+    position: relative;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a.active {
+    font-weight: bold;
+}
+
+nav a.active::before {
+    content: "> ";
+    color: #f2b705;
+}
+
+#top {
+    border-bottom: 4px solid teal;
+}
+
+main.srodkowy {
+    flex: 1;
+    max-width: 800px;
+    padding-right: 2vw;
+    padding-left: 2vw;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.miniatura {
+    flex: 1 1 200px;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+.miniatura:hover {
+    transform: translateY(-3px);
+}
+
+.miniatura img {
+    width: 100%;
+    height: auto; 
+    display: block;
+    border-radius: 6px;
+    transition: filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.miniatura:hover img {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.miniatura figcaption {
+    text-align: center;
+    padding-top: 6px;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.lightbox:target {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+}
+
+.lightbox .zamknij {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 12px;
+}
+footer {
+    background-color: #1c1c1c;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+a {
+    color: teal;
+}
+table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #1c1c1c;
+}
+table caption {
+    caption-side: top;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+table th, table td{
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background-color: #e7e7e7;
+}
+
+form p {
+    margin: 0 0 14px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: 2px solid teal;
+    border-color: teal;
+}
+
+form fieldset {
+    max-width: 400px;
+    box-sizing: border-box;
+    margin: 0 0 14px;
+    padding: 10px 14px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
+
+form legend {
+    padding: 0 6px;
+    font-weight: bold;
+}
+
+form fieldset label {
+    display: inline;
+    margin-right: 14px;
+    font-weight: normal;
+}
+
+form input[type="submit"],
+form input[type="reset"] {
+    padding: 9px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form input[type="submit"] {
+    background-color: teal;
+    color: #fff;
+}
+
+form input[type="reset"] {
+    background-color: #ddd;
+    color: #222;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    nav {
+        flex: none;
+    }
+
+    nav ul {
+
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    nav li {
+        margin-bottom: 0;
+    }
+    .submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 140px;
+        padding: 10px;
+        background-color: #1c1c1c;
+        z-index: 10;
+    }
+    th, td {
+        padding: 4px;
+        font-size: 0.85rem;
+    }
+}
