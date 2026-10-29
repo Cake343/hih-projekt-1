@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:attribute name="id" type="idTyp"/>
+    
+    <xs:element name="plik" type="xs:anyURI"/>
+
+    <xs:group name="metadaneGrupa">
+        <xs:sequence>
+            <xs:element name="tagi" type="trzyTagiTyp"/>
+            <xs:element name="ocena" type="ocenaTyp"/>
+            <xs:element name="rozmiar" type="liczbaJednostkaTyp"/>
+        </xs:sequence>
+    </xs:group>
+
+
+
+
+
+    <xs:simpleType name="idTyp">
+        <xs:restriction base="xs:ID">
+            <xs:pattern value="[aosz][0-9]{1,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tekstTyp">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="urlTyp">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="https?://.+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="isoTyp">
+        <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="50"/>
+            <xs:maxInclusive value="102400"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="czasNaswTyp">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="1/[0-9]{1,5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="tagTyp">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="scena"/>
+            <xs:enumeration value="ludzie"/>
+            <xs:enumeration value="kolor"/>
+            <xs:enumeration value="noc"/>
+            <xs:enumeration value="zwierzeta"/>
+            <xs:enumeration value="miasto"/>
+            <xs:enumeration value="natura"/>
+            <xs:enumeration value="czarnobiale"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tagiListaTyp">
+            <xs:list itemType="tagTyp"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="trzyTagiTyp">
+        <xs:restriction base="tagiListaTyp">
+            <xs:length value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="ocenaTyp">
+        <xs:union memberTypes="ocenaLiczbaTyp ocenaSlowoTyp"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ocenaLiczbaTyp">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ocenaSlowoTyp">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="wyroznione"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+
+
+    <xs:complexType name="liczbaJednostkaTyp">
+        <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+                <xs:attribute name="jednostka" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="mm"/>
+                            <xs:enumeration value="kb"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="autorTyp">
+        <xs:all>
+            <xs:element name="imie" type="tekstTyp"/>
+            <xs:element name="nazwisko" type="tekstTyp"/>
+            <xs:element name="nr_albumu">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9]{6}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="opis">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="1000"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="aparatTyp">
+        <xs:sequence>
+            <xs:element name="producent" type="tekstTyp"/>
+            <xs:element name="model" type="tekstTyp"/>
+            <xs:element name="matryca">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="film 35 mm"/>
+                        <xs:enumeration value="APS-C"/>
+                        <xs:enumeration value="pełna klatka"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="strona" type="urlTyp"/>
+        </xs:sequence>
+        <!-- Atrybuty zawsze PO sekwencji. ref="id" wstawia globalny atrybut id (typ idTyp, np. a1). -->
+        <xs:attribute ref="id" use="required"/>
+        <!-- Atrybut typ z lokalnym typem prostym: tylko dwie dozwolone wartości. -->
+        <xs:attribute name="typ" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="cyfrowy"/>
+                    <xs:enumeration value="analogowy"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="obiektywTyp">
+        <xs:sequence>
+            <xs:element name="nazwa" type="tekstTyp"/>
+            <xs:element name="ogniskowa" type="liczbaJednostkaTyp"/>
+            <xs:element name="przyslona">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0.95"/>
+                        <xs:maxInclusive value="22.0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute ref="id" use="required"/>
+        <xs:attribute name="mocowanie" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="E"/>
+                    <xs:enumeration value="FD"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- ZDJĘCIE, TYP BAZOWY: część wspólna każdego zdjęcia (plik + podpis + atrybuty).
+         Sam w sobie nie jest użyty w XML; służy jako baza do rozszerzenia w zdjecieTyp. -->
+    <xs:complexType name="zdjecieBazaTyp">
+        <xs:sequence>
+            <!-- ref do globalnego elementu plik (zadeklarowany na górze, typ xs:anyURI). -->
+            <xs:element ref="plik"/>
+            <xs:element name="podpis" type="tekstTyp"/>
+        </xs:sequence>
+        <!-- Drugie użycie globalnego atrybutu id (wymóg: globalny atrybut użyty min. 2 razy). -->
+        <xs:attribute ref="id" use="required"/>
+        <!-- xs:IDREF: wartość musi być równa jakiemuś istniejącemu ID w dokumencie (tu: id aparatu, np. a1). -->
+        <xs:attribute name="aparat" type="xs:IDREF" use="required"/>
+        <!-- default: jeśli atrybutu nie ma w XML, przyjmowana jest wartość "pozioma". -->
+        <xs:attribute name="orientacja" default="pozioma">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="pozioma"/>
+                    <xs:enumeration value="pionowa"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- ZDJĘCIE, TYP ROZSZERZONY: wyprowadzanie typu przez extension.
+         Bierze wszystko z zdjecieBazaTyp (plik, podpis, atrybuty) i dokłada nowe elementy NA KOŃCU. -->
+    <xs:complexType name="zdjecieTyp">
+        <!-- complexContent = treść złożona (z elementami potomnymi). -->
+        <xs:complexContent>
+            <xs:extension base="zdjecieBazaTyp">
+                <xs:sequence>
+                    <!-- Wklejenie grupy: tagi, ocena, rozmiar (w tej kolejności). -->
+                    <xs:group ref="metadaneGrupa"/>
+                    <!-- choice: w XML musi wystąpić DOKŁADNIE JEDEN z tych elementów,
+                         parametry (zdjęcie cyfrowe) albo film (zdjęcie analogowe). -->
+                    <xs:choice>
+                        <!-- Lokalny typ złożony: elementy iso i czas + atrybut obiektyw. -->
+                        <xs:element name="parametry">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="iso" type="isoTyp"/>
+                                    <xs:element name="czas" type="czasNaswTyp"/>
+                                </xs:sequence>
+                                <!-- Odwołanie do id obiektywu (np. o1). -->
+                                <xs:attribute name="obiektyw" type="xs:IDREF" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <!-- Lokalny typ złożony z simpleContent: element ma sam tekst (nazwa kliszy)
+                             i atrybut, ale nie ma elementów potomnych. -->
+                        <xs:element name="film">
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <!-- Tekst elementu ma typ tekstTyp, extension dokłada do niego atrybut. -->
+                                    <xs:extension base="tekstTyp">
+                                        <!-- Lokalny typ prosty: czułość kliszy 25–3200 ISO. -->
+                                        <xs:attribute name="czulosc" use="required">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:positiveInteger">
+                                                    <xs:minInclusive value="25"/>
+                                                    <xs:maxInclusive value="3200"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:attribute>
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- SESJA: tytuł, miejsce i dowolnie wiele zdjęć (maxOccurs="unbounded"). -->
+    <xs:complexType name="sesjaTyp">
+        <xs:sequence>
+            <xs:element name="tytul" type="tekstTyp"/>
+            <xs:element name="miejsce" type="tekstTyp"/>
+            <!-- Jedna deklaracja + maxOccurs zamiast kopiowania elementu kilka razy. -->
+            <xs:element name="zdjecie" type="zdjecieTyp" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute ref="id" use="required"/>
+        <!-- Typ wbudowany xs:date: format RRRR-MM-DD. -->
+        <xs:attribute name="data" type="xs:date" use="required"/>
+        <!-- Lokalny typ prosty z enumeration: tylko te cztery gatunki. -->
+        <xs:attribute name="gatunek" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="teatr"/>
+                    <xs:enumeration value="koncert"/>
+                    <xs:enumeration value="codziennosc"/>
+                    <xs:enumeration value="krajobraz"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- LINK: adres jako tekst elementu (typ urlTyp) + atrybut opis.
+         simpleContent, bo element ma tekst i atrybut, bez elementów potomnych. -->
+    <xs:complexType name="linkTyp">
+        <xs:simpleContent>
+            <xs:extension base="urlTyp">
+                <xs:attribute name="opis" type="tekstTyp" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- KORZEŃ: jedyny globalny element-korzeń. Ma lokalny typ złożony (bez name).
+         Kolejność dzieci w sequence musi zgadzać się z kolejnością w hobby.xml. -->
+    <xs:element name="fotografia">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- autor korzysta z globalnego typu autorTyp, więc nie ma tu complexType w środku. -->
+                <xs:element name="autor" type="autorTyp"/>
+                <!-- sprzet: lokalny typ złożony, najpierw wszystkie aparaty, potem wszystkie obiektywy. -->
+                <xs:element name="sprzet">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="aparat" type="aparatTyp" maxOccurs="unbounded"/>
+                            <xs:element name="obiektyw" type="obiektywTyp" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- sesje: lokalny typ złożony, dowolnie wiele sesji. -->
+                <xs:element name="sesje">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="sesja" type="sesjaTyp" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- linki: lokalny typ złożony, minimum 3 linki (wymóg projektu). -->
+                <xs:element name="linki">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="link" type="linkTyp" minOccurs="3" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

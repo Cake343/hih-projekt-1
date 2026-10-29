@@ -7,6 +7,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 .logo rect.flash {
     animation: flash 3s infinite;
@@ -22,6 +25,7 @@ header {
 .container {
     display: flex;
     flex-direction: row;
+    flex: 1;
 }
 
 nav {
@@ -162,12 +166,13 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: relative;
-    width: 100%;
 }
 
 a {
     color: teal;
+}
+.tabela {
+    overflow-x: auto;
 }
 table {
     width: 100%;

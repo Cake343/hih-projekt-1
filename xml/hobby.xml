@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fotografia xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="hobby.xsd">
+    <autor>
+        <imie>Kacper</imie>
+        <nazwisko>Dębowski</nazwisko>
+        <nr_albumu>213005</nr_albumu>
+        <opis>Fotografia to moja pasja, która pozwala mi uchwycić piękno otaczającego świata i wyrazić siebie poprzez obraz. Uwielbiam eksperymentować z różnymi technikami i stylami, a także podróżować, aby odkrywać nowe miejsca i kultury. Fotografia daje mi możliwość zatrzymania chwil, które mogę później dzielić z innymi.</opis>
+    </autor>
+    <sprzet>
+        <aparat id="a1" typ="cyfrowy">
+            <producent>Sony</producent>
+            <model>Alpha 7 III</model>
+            <matryca>pełna klatka</matryca>
+            <strona>https://www.sony.pl/electronics/aparaty-bezlustrowe/ilce-7m3</strona>
+        </aparat>
+        <aparat id="a2" typ="analogowy">
+            <producent>Canon</producent>
+            <model>AE-1</model>
+            <matryca>film 35 mm</matryca>
+            <strona>https://www.usa.canon.com/internet/portal/us/home/products/details/cameras/film/slr/ae-1</strona>
+        </aparat>
+        <obiektyw id="o1" mocowanie="E">
+            <nazwa>Sony FE 35mm f/1.8</nazwa>
+            <ogniskowa jednostka="mm">35</ogniskowa>
+            <przyslona>1.8</przyslona>
+        </obiektyw>
+        <obiektyw id="o2" mocowanie="E">
+            <nazwa>Sony FE 85mm f/1.8</nazwa>
+            <ogniskowa jednostka="mm">85</ogniskowa>
+            <przyslona>1.8</przyslona>
+        </obiektyw>
+        <obiektyw id="o3" mocowanie="FD">
+            <nazwa>Canon FD 50mm f/1.8</nazwa>
+            <ogniskowa jednostka="mm">50</ogniskowa>
+            <przyslona>1.8</przyslona>
+        </obiektyw>
+    </sprzet>
+    <sesje>
+        <sesja id="s1" data="2023-05-15" gatunek="teatr">
+            <tytul>Spektakl grupy teatralnej</tytul>
+            <miejsce>Dom Kultury, Brodnica</miejsce>
+            <zdjecie id="z1" aparat="a1" orientacja="pozioma">
+                <plik>../img/1.jpg</plik>
+                <podpis>Za kulisami</podpis>
+                <tagi>scena ludzie kolor</tagi>
+                <ocena>4</ocena>
+                <rozmiar jednostka="kb">268.7</rozmiar>
+                <parametry obiektyw="o1">
+                    <iso>3200</iso>
+                    <czas>1/125</czas>
+                </parametry>
+            </zdjecie>
+            <zdjecie id="z2" aparat="a1" orientacja="pozioma">
+                <plik>../img/2.jpg</plik>
+                <podpis>Teatr</podpis>
+                <tagi>scena ludzie kolor</tagi>
+                <ocena>wyroznione</ocena>
+                <rozmiar jednostka="kb">236.0</rozmiar>
+                <parametry obiektyw="o1">
+                    <iso>6400</iso>
+                    <czas>1/200</czas>
+                </parametry>
+            </zdjecie>
+        </sesja>
+        <sesja id="s2" data="2023-06-20" gatunek="koncert">
+            <tytul>Koncert plenerowy</tytul>
+            <miejsce>Scena nad jeziorem, Brodnica</miejsce>
+            <zdjecie id="z3" aparat="a1" orientacja="pionowa">
+                <plik>../img/3.jpg</plik>
+                <podpis>Koncert</podpis>
+                <tagi>scena noc ludzie</tagi>
+                <ocena>5</ocena>
+                <rozmiar jednostka="kb">610.6</rozmiar>
+                <parametry obiektyw="o2">
+                    <iso>4000</iso>
+                    <czas>1/250</czas>
+                </parametry>
+            </zdjecie>
+        </sesja>
+        <sesja id="s3" data="2024-02-18" gatunek="codziennosc">
+            <tytul>Codzienność</tytul>
+            <miejsce>Brodnica</miejsce>
+            <zdjecie id="z4" aparat="a1" orientacja="pozioma">
+                <plik>../img/4.jpg</plik>
+                <podpis>Kot w podróży</podpis>
+                <tagi>zwierzeta miasto kolor</tagi>
+                <ocena>4</ocena>
+                <rozmiar jednostka="kb">406.6</rozmiar>
+                <parametry obiektyw="o1">
+                    <iso>400</iso>
+                    <czas>1/500</czas>
+                </parametry>
+            </zdjecie>
+            <zdjecie id="z5" aparat="a2" orientacja="pozioma">
+                <plik>../img/5.jpg</plik>
+                <podpis>Spacer</podpis>
+                <tagi>ludzie natura czarnobiale</tagi>
+                <ocena>5</ocena>
+                <rozmiar jednostka="kb">1604.0</rozmiar>
+                <film czulosc="400">Kodak Tri-X</film>
+            </zdjecie>
+        </sesja>
+        <sesja id="s4" data="2023-12-19" gatunek="krajobraz">
+            <tytul>Jesień w lesie</tytul>
+            <miejsce>Las pod Gdańskiem</miejsce>
+            <zdjecie id="z6" aparat="a1" orientacja="pozioma">
+                <plik>../img/6.jpg</plik>
+                <podpis>Jesienny las</podpis>
+                <tagi>natura kolor czarnobiale</tagi>
+                <ocena>3</ocena>
+                <rozmiar jednostka="kb">972.1</rozmiar>
+                <parametry obiektyw="o2">
+                    <iso>200</iso>
+                    <czas>1/160</czas>
+                </parametry>
+            </zdjecie>
+        </sesja>
+    </sesje>
+    <linki>
+        <link opis="Strona główna">https://kacperd.pl</link>
+        <link opis="Portfolio">https://foto.kacperd.pl</link>
+        <link opis="Instagram">https://www.instagram.com/kacperdfoto</link>
+    </linki>
+</fotografia>
